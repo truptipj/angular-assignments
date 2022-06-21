@@ -1,0 +1,42 @@
+.topnav {
+    overflow: hidden;
+    background-color: rgb(36, 197, 225);
+  }
+  .profile{
+    height:60px;
+    width:60px;
+    float:right;
+    position:relative;
+    right:322px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .user-name{
+    float: right;
+   
+  }
+  .user-mail{
+    float: right;
+   
+  }
+  .example-card {
+    max-width: 400px;
+  }
+  .btn{
+    position: relative; 
+    left: 180px;
+    background-color: rgb(179, 227, 243); 
+    cursor: pointer;
+    border-radius: 20px;
+    border-color: rgb(92, 197, 228);
+  }
+  .sub-btn{
+    float: right;
+     border-radius: 20px;
+     background-color: rgb(179, 227, 243); 
+     cursor: pointer;
+     position: relative; 
+    left: -208px;
+    border-color: rgb(92, 197, 228);
+
+  }
