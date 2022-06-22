@@ -23,7 +23,7 @@ export class TableComponent implements OnInit {
 
     {name:'Riya',lastName:'Kothari',zip:'src.zip',mobile:'8637838893'},
 
-    {name:'Mukesh',lastName:'Patil',zip:'src.zip',mobile:'4672287387'},
+    {name:'Mukesh',lastName:'Chhaya',zip:'src.zip',mobile:'4672287387'},
 
     {name:'Saloni',lastName:'Deshmukh',zip:'src.zip',mobile:'4676878798'},
 
