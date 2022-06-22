@@ -1,0 +1,57 @@
+
+
+<div class="card">
+    <div class="card-header">
+      Featured
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+
+
+
+
+
+      <table class="table table-bordered">
+
+        <thead>
+    
+          <tr>
+    
+            <th>Name</th>
+    
+            <th>Last Name</th>
+    
+            <th>Zip</th>
+    
+            <th *ngIf="display">Mobile No</th>
+    
+          </tr>
+    
+        </thead>
+    
+        <tbody *ngFor="let data of array">
+    
+          <tr>
+    
+            <td> <span *ngIf="!(data.name.length > 4)">{{data.name}}</span><span *ngIf="data.name.length > 4" appTableData>{{data.name}}</span></td>
+    
+            <td ><span [style.color]="(data.lastName.substring(0,1) === ('M')) || data.lastName.substring(0,1) === ('C') || data.lastName.substring(0,1) === ('D')  ? 'green' : 'purple' " >{{
+                data.lastName
+              }}</span></td>
+    
+            <td>{{data.zip}}</td>
+    
+            <td *ngIf="display">{{data.mobile}}</td>
+    
+          </tr>
+    
+        </tbody>
+    
+      </table>
+    
+    
+
+
+      <a href="#" class="btn btn-primary" (click)="show()">Go somewhere</a>
+    </div>
+  </div>
