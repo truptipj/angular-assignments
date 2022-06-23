@@ -1,0 +1,57 @@
+<div class="card" class="col-md-10">
+  <div class="card-body">
+    <h4 class="card-title">Customer List</h4>
+    <br />
+    <table class="table">
+      <thead class="table-info">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>DOB</th>
+          <th>Mobile No</th>
+          <th>email</th>
+
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody class="table-success">
+        <tr *ngFor="let user of data; let i = index">
+          <td>
+            {{ user.firstName }}
+          </td>
+          <td>
+            {{ user.lastName }}
+          </td>
+          <td>
+            {{ user.dob }}
+          </td>
+          <td>
+            {{ user.number }}
+          </td>
+          <td>
+            {{ user.email }}
+          </td>
+          <td>
+            <button
+              style="background-color: green"
+              class="btn btn-primary"
+              (click)="edit(user, i)"
+            >
+              Edit
+            </button>
+            &nbsp; &nbsp;
+
+            <button
+              style="background-color: red"
+              class="btn btn-primary"
+              (click)="delete(i)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="data.length === 0" style="font-weight: bolder">No Data</p>
+  </div>
+</div>

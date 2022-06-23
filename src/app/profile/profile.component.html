@@ -1,0 +1,92 @@
+<div class="container-fluid">
+  <div class="row mt-4">
+    <div class="col-md-5">
+      <div id="cardstyle" class="center">
+        <div class="card m-0">
+          <div class="card-body">
+            <h4>Customer Profile</h4>
+            <form role="form" [formGroup]="customerForm">
+              <div class="form-group">
+                <label for="fullname"> First Name </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="firstName"
+                  id="fullname"
+                  maxlength="140"
+                />
+                <br />
+              </div>
+              <div class="form-group">
+                <label for="lastName"> Last Name </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="lastName"
+                  id="lastName"
+                /><br />
+              </div>
+              <div class="form-group">
+                <label for="dob"> DOB </label>
+                <input
+                  type="date"
+                  class="form-control"
+                  formControlName="dob"
+                  id="dob"
+                />
+                <br />
+              </div>
+              <div class="form-group">
+                <label for="number"> Mobile No </label>
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="number"
+                  id="number"
+                />
+                <br />
+              </div>
+
+              <div class="form-group">
+                <label for="email"> Email </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="email"
+                  id="email"
+                />
+                <br />
+              </div>
+
+              <button
+                *ngIf="!isUpdate"
+                [disabled]="!customerForm.valid"
+                (click)="addData()"
+                type="reset"
+                class="btn btn-primary"
+              >
+                Add
+              </button>
+              <button
+                *ngIf="isUpdate"
+                [disabled]="!customerForm.valid"
+                (click)="updateData()"
+                type="reset"
+                class="btn btn-primary"
+              >
+                Update
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7 m-0">
+      <app-list
+        [data]="userList"
+        (updateRow)="bindRow($event)"
+        (deleteRow)="deleteUser($event)"
+      ></app-list>
+    </div>
+  </div>
+</div>
