@@ -1,0 +1,157 @@
+<nav id="navbar" class="navbar">
+  <div class="container-fluid">
+    <span id="nav" class="navbar-brand mb-0 h1">Expensify</span>
+    <img class="logo" src="../assets/download.png" alt="">
+  </div>
+</nav>
+<br /><br />
+
+<div>
+  <button (click) = "getFiltedMonth('Jan')" id="btn1" type="button" class="btn btn-primary">Jan {{janTotal}}</button>
+  <button (click) = "getFiltedMonth('Feb')" id="btn" type="button" class="btn btn-success">Feb {{febTotal}}</button>
+  <button (click) = "getFiltedMonth('Mar')" id="btn" type="button" class="btn btn-secondary">March {{marTotal}}</button>
+  <button (click) = "getFiltedMonth('Apr')" id="btn" type="button" class="btn btn-warning">April {{aprTotal}}</button>
+  <button (click) = "getFiltedMonth('May')" id="btn" type="button" class="btn btn-info">May {{mayTotal}}</button>
+  <button (click) = "getFiltedMonth('June')" id="btn" type="button" class="btn btn-dark">June {{juneTotal}}</button>
+  <button (click) = "getFiltedMonth('June')" id="btn-july" type="button" class="btn btn-dark">July {{julyTotal}}</button>
+  <button (click) = "getFiltedMonth('June')" id="btn-aug" type="button" class="btn btn-dark">Aug {{augTotal}}</button>
+  <button (click) = "getFiltedMonth('June')" id="btn-sep" type="button" class="btn btn-dark">Sep {{sepTotal}}</button>
+  <button (click) = "getFiltedMonth('June')" id="btn-oct" type="button" class="btn btn-dark">Oct {{octTotal}}</button>
+  <button (click) = "getFiltedMonth('June')" id="btn-nov" type="button" class="btn btn-dark">Nov {{novTotal}}</button>
+  <button (click) = "getFiltedMonth('June')" id="btn-dec" type="button" class="btn btn-dark">Dec {{decTotal}}</button>
+
+</div>
+<br/>
+<br/>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th class="expense" colspan="4">Expenses</th>
+      <th class="action" scope="col">Action</th>
+    </tr>
+    <tr>
+      <th scope="col">Company</th>
+      <th scope="col">Category</th>
+      <th scope="col">Date</th>
+      <th scope="col">Amount</th>
+    </tr>
+
+   
+  </thead>
+  <tbody>
+    <tr *ngFor="let todo of expenses; let i = index">
+      <td>
+        {{ todo.company }}
+      </td>
+      <td>
+        {{ todo.category }}
+      </td>
+      <td>
+        {{ todo.date  | date: 'dd/MM/yyyy' }}
+      </td>
+
+      <td>
+        {{ todo.amount }}
+      </td>
+      <td>
+        <button type="button" class="btn btn-link" (click)="deleteExpense(todo)">Delete</button>
+      </td>
+    </tr>
+    <tr *ngIf = "expenses.length === 0">
+      No Data
+    </tr>
+  </tbody>
+</table>
+
+<button
+  id="add-expenses"
+  type="button"
+  class="btn btn-primary"
+  data-toggle="modal"
+  data-target="#myModal"
+>
+  Add Expenses
+</button>
+
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4"></div>
+            <div id="cardstyle" class="col-md-4 center">
+              <form role="form" [formGroup]="expenseForm">
+                <div class="form-group">
+                  <label for="company"> Company </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="company"
+                    id="company"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="category"> Category </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="category"
+                    id="category"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="date"> Date </label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    formControlName="date"
+                    id="date"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="amount"> Amount </label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    formControlName="amount"
+                    id="amount"
+                  />
+                </div>
+                <br />
+
+
+              </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type = "button" #myModalClose [disabled] = "!expenseForm.valid" class="btn btn-primary" data-dismiss="modal" (click)= "addExpense()">Add Expenses</button>
+
+              <button type="button" class="btn btn-danger" data-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+
+
+
+
