@@ -1,0 +1,119 @@
+<nav id="navbar" class="navbar">
+    <div class="container-fluid">
+      <span id="nav" class="navbar-brand mb-0 h1">Expensify</span>
+      <img class="logo" src="../assets/download.png" alt="logo">
+    </div>
+  </nav>
+  <br/><br/> 
+  <div *ngFor="let month of yearlist; let i = index"> 
+    <button (click)="getFiltedMonth(i + 1)" id="btn" type="button" class="floated btn-primary" id="slide_start_button">{{month.name}} -
+      {{month.total}}</button>
+  </div> <br> 
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="expense" colspan="4">
+          <button class="btn btn-info" (click)="getExpenseList()" type="button">Expenses</button>
+        </th>
+        <th class="action" scope="col">Action</th>
+      </tr>
+      <tr>
+        <th scope="col">Company</th>
+        <th scope="col">Category</th>
+        <th scope="col">Date</th>
+        <th scope="col">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of expenses; let i = index">
+        <td>
+          {{ todo.company }}
+        </td>
+        <td>
+          {{ todo.category }}
+        </td>
+        <td>
+          {{ todo.date | date:'dd/MM/yyyy' }}   
+        </td>
+        <td>
+          {{ todo.amount }}
+        </td>
+        <td>
+          <button type="button" class="btn btn-link" (click)="deleteExpense(todo)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+
+
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Add Expenses</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div id="cardstyle" class="center">
+                <form role="form" [formGroup]="expenseForm">
+                  <div class="form-group">
+                    <label for="company"> Company </label>
+                    <input type="text" class="form-control" formControlName="company" id="company"
+                      placeholder="Company" />
+                      <small
+                      *ngIf="!expenseForm.get('company').valid && (expenseForm.get('company').dirty || expenseForm.get('company').touched)"
+                      class="text-danger">
+                      <span *ngIf="expenseForm.get('company').errors.required">
+                          Company Name is Required
+                      </span>
+                      <span *ngIf="expenseForm.get('company').errors.pattern">
+                          Please valid first Name
+                      </span>
+                  </small>
+                  </div>
+                  <div class="form-group">
+                    <label for="category"> Category </label>
+                    <input type="text" class="form-control" formControlName="category" id="category"
+                      placeholder="Category" />
+                      <small
+                      *ngIf="!expenseForm.get('category').valid && (expenseForm.get('category').dirty || expenseForm.get('category').touched)"
+                      class="text-danger">
+                      <span *ngIf="expenseForm.get('category').errors.required">
+                          Category is Required
+                      </span>
+                      <span *ngIf="expenseForm.get('category').errors.pattern">
+                          Please valid first Name
+                      </span>
+                  </small>
+                  </div>
+                  <div class="form-group">
+                    <label for="date"> Date </label>
+                    <input min="2022-01-01" max="2022-12-31" type="date" class="form-control" formControlName="date" id="date" />
+                  </div>
+                  <div class="form-group">
+                    <label for="amount"> Amount </label>
+                    <input type="number" class="form-control" formControlName="amount" id="amount" placeholder="Amount" />
+                  </div>
+                  <br />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          <button type="button" #myModalClose [disabled]="!expenseForm.valid" class="btn btn-primary"
+            (click)="addExpense()" data-bs-dismiss="modal">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button id="add-expenses" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Add Expenses
+  </button>
