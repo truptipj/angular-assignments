@@ -16,12 +16,20 @@ export class FormsComponent {
   relevance= relevance;
 //formgroup
   userForm: any;
+  
   addressFormGroup: any = FormGroup;
- 
+  
    birthdate!: Date;
    age!: number;
-
-  constructor(private fb: FormBuilder) { }
+  //  minDate: Date;
+  //  maxDate: Date;
+  constructor(private fb: FormBuilder) { 
+    
+    // const currentYear = new Date().getFullYear();
+    // this.minDate = new Date(currentYear - 20, 12, 99);
+    // console.log(this.minDate.toDateString());
+    // this.maxDate = new Date(currentYear + 1, 11, 31);
+  }
   ngOnInit() {
     this.createUserForm();
   }
@@ -96,7 +104,10 @@ export class FormsComponent {
   
   saveDetails(value: any) {
     console.log(value);
-  }
+    if(!this.userForm.valid) {
+      this.userForm.markAllAsTouched();
+    return;
+  }}
   
   ageCalculator(){
     if(this.birthdate){
@@ -109,4 +120,7 @@ export class FormsComponent {
     return new Date().toISOString().split('T')[0]
  }
 
-  } 
+
+
+}
+

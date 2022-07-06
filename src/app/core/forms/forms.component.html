@@ -9,7 +9,7 @@
                         <input type="number" class="form-control" formControlName="employeeNumber" id="employeeNumber"
                             placeholder="Employee Number">
                         <small
-                            *ngIf="!userForm.get('basicInfo').get('employeeNumber').valid && (userForm.get('basicInfo').get('employeeNumber').dirty || userForm.get('basicInfo').get('employeeNumber').touched)"
+                            *ngIf="(userForm.get('basicInfo').get('employeeNumber').dirty || userForm.get('basicInfo').get('employeeNumber').touched)"
                             class="text-danger">
                             <span *ngIf="userForm.get('basicInfo').get('employeeNumber').errors.required">
                                 Employee Number is Required
@@ -21,7 +21,7 @@
                         <input type="text" class="form-control" formControlName="firstName" id="firstName"
                             placeholder="First Name">
                         <small
-                            *ngIf="!userForm.get('basicInfo').get('firstName').valid && (userForm.get('basicInfo').get('firstName').dirty || userForm.get('basicInfo').get('firstName').touched)"
+                            *ngIf="(userForm.get('basicInfo').get('firstName').dirty || userForm.get('basicInfo').get('firstName').touched)"
                             class="text-danger">
                             <span *ngIf="userForm.get('basicInfo').get('firstName').errors.required">
                                 First Name is Required
@@ -36,7 +36,7 @@
                         <input type="text" class="form-control" formControlName="middleName" id="middleName"
                             placeholder="Middle Name">
                         <small
-                            *ngIf="!userForm.get('basicInfo').get('middleName').valid && (userForm.get('basicInfo').get('middleName').dirty || userForm.get('basicInfo').get('middleName').touched)"
+                            *ngIf="(userForm.get('basicInfo').get('middleName').dirty || userForm.get('basicInfo').get('middleName').touched)"
                             class="text-danger">
                             <span *ngIf="userForm.get('basicInfo').get('middleName').errors.required">
                                 Middle Name is Required
@@ -51,7 +51,7 @@
                         <input type="text" class="form-control" formControlName="lastName" id="lastName"
                             placeholder="Last Name">
                         <small
-                            *ngIf="!userForm.get('basicInfo').get('lastName').valid && (userForm.get('basicInfo').get('lastName').dirty || userForm.get('basicInfo').get('lastName').touched)"
+                            *ngIf="(userForm.get('basicInfo').get('lastName').dirty || userForm.get('basicInfo').get('lastName').touched)"
                             class="text-danger">
                             <span *ngIf="userForm.get('basicInfo').get('lastName').errors.required">
                                 Last Name is Required
@@ -70,7 +70,7 @@
                         <input type="text" class="form-control" formControlName="department" id="department"
                             placeholder="Department">
                         <small
-                            *ngIf="!userForm.get('workInfo').get('department').valid && (userForm.get('workInfo').get('department').dirty || userForm.get('workInfo').get('department').touched)"
+                            *ngIf="(userForm.get('workInfo').get('department').dirty || userForm.get('workInfo').get('department').touched)"
                             class="text-danger">
                             <span *ngIf="userForm.get('workInfo').get('department').errors.required">
                                 Department is Required
@@ -85,7 +85,7 @@
                         <input type="text" class="form-control" formControlName="location" id="location"
                             placeholder="Location">
                         <small
-                            *ngIf="!userForm.get('workInfo').get('location').valid && (userForm.get('workInfo').get('location').dirty || userForm.get('workInfo').get('location').touched)"
+                            *ngIf="(userForm.get('workInfo').get('location').dirty || userForm.get('workInfo').get('location').touched)"
                             class="text-danger">
                             <span *ngIf="userForm.get('workInfo').get('location').errors.required">
                                 Location is Required
@@ -101,7 +101,7 @@
                         <input type="number" class="form-control" formControlName="workphone" id="workphone"
                             placeholder="Workphone">
                         <small
-                            *ngIf="!userForm.get('workInfo').get('workphone').valid && (userForm.get('workInfo').get('workphone').dirty || userForm.get('workInfo').get('workphone').touched)"
+                            *ngIf="(userForm.get('workInfo').get('workphone').dirty || userForm.get('workInfo').get('workphone').touched)"
                             class="text-danger">
                             <span *ngIf="userForm.get('workInfo').get('workphone').errors.required">
                                 Workphone is Required
@@ -114,7 +114,7 @@
                         <input [max]="getToday()" type="date" class="form-control" formControlName="salaryRevision" id="salaryRevision"
                             placeholder="Salary Revision Due On">
                         <small
-                            *ngIf="!userForm.get('workInfo').get('salaryRevision').valid && (userForm.get('workInfo').get('salaryRevision').dirty || userForm.get('workInfo').get('salaryRevision').touched)"
+                            *ngIf="(userForm.get('workInfo').get('salaryRevision').dirty || userForm.get('workInfo').get('salaryRevision').touched)"
                             class="text-danger">
                             <span *ngIf="userForm.get('workInfo').get('salaryRevision').errors.required">
                                 Salary Revision Due On is Required
@@ -126,7 +126,7 @@
                         <input type="date" [max]="getToday()" class="form-control" formControlName="dateOfJoining" id="dateOfJoining"
                             placeholder="Date Of Joining">
                         <small
-                            *ngIf="!userForm.get('workInfo').get('dateOfJoining').valid && (userForm.get('workInfo').get('dateOfJoining').dirty || userForm.get('workInfo').get('dateOfJoining').touched)"
+                            *ngIf="(userForm.get('workInfo').get('dateOfJoining').dirty || userForm.get('workInfo').get('dateOfJoining').touched)"
                             class="text-danger">
                             <span *ngIf="userForm.get('workInfo').get('dateOfJoining').errors.required">
                                 Date Of Joining is Required
@@ -143,7 +143,7 @@
                         <input type="number" class="form-control" formControlName="mobPhone" id="mobPhone"
                             placeholder="Mobile Phone">
                             <small
-                            *ngIf="!userForm.get('personalInfo').get('mobPhone').valid && (userForm.get('personalInfo').get('mobPhone').dirty || userForm.get('personalInfo').get('mobPhone').touched)"
+                            *ngIf="(userForm.get('personalInfo').get('mobPhone').dirty || userForm.get('personalInfo').get('mobPhone').touched)"
                             class="text-danger">
                             <span *ngIf="userForm.get('personalInfo').get('mobPhone').errors.required">
                                 Mobile Phone is Required
@@ -156,7 +156,7 @@
                     <input type="text" class="form-control" formControlName="tags" id="tags"
                         placeholder="Tags">
                     <small
-                        *ngIf="!userForm.get('personalInfo').get('tags').valid && (userForm.get('personalInfo').get('tags').dirty || userForm.get('personalInfo').get('tags').touched)"
+                        *ngIf="(userForm.get('personalInfo').get('tags').dirty || userForm.get('personalInfo').get('tags').touched)"
                         class="text-danger">
                         <span *ngIf="userForm.get('personalInfo').get('tags').errors.required">
                             Tags is Required
@@ -171,7 +171,7 @@
                     <input [(ngModel)]="birthdate" type="date" class="form-control" formControlName="birthDate" id="birthDate"
                         placeholder="Birth Date">    
                     <small
-                        *ngIf="!userForm.get('personalInfo').get('birthDate').valid && (userForm.get('personalInfo').get('birthDate').dirty || userForm.get('personalInfo').get('birthDate').touched)"
+                        *ngIf="(userForm.get('personalInfo').get('birthDate').dirty || userForm.get('personalInfo').get('birthDate').touched)"
                         class="text-danger">
                         <span *ngIf="userForm.get('personalInfo').get('birthDate').errors.required">
                             Birth Date is Required
@@ -191,6 +191,16 @@
                             {{ tshirt.value}}
                           </option>
                         </select>
+                        <small
+                        *ngIf="(userForm.get('personalInfo').get('tshirt').dirty || userForm.get('personalInfo').get('tshirt').touched)"
+                        class="text-danger">
+                        <span *ngIf="userForm.get('personalInfo').get('tshirt').errors.required">
+                            tshirt is Required
+                        </span>
+                        <span *ngIf="userForm.get('personalInfo').get('tshirt').errors.pattern">
+                            Please Enter Valid  tshirt
+                        </span>
+                    </small>
                       </div>
                     <!-- t shirt end -->  
                         <div class="form-group col-md-6">
@@ -199,7 +209,17 @@
                                 <option value="deafult">Select</option>
                                 <option value="single">Single</option>
                                 <option value="married">Married</option>
-                            </select><br>   
+                            </select>
+                            <small
+                            *ngIf="(userForm.get('personalInfo').get('maritalStatus').dirty || userForm.get('personalInfo').get('maritalStatus').touched)"
+                            class="text-danger">
+                            <span *ngIf="userForm.get('personalInfo').get('maritalStatus').errors.required">
+                                maritalStatus is Required
+                            </span>
+                            <span *ngIf="userForm.get('personalInfo').get('maritalStatus').errors.pattern">
+                                Please Enter Valid  maritalStatus
+                            </span>
+                        </small>
                         </div>
                     <!-- </div> -->
                     <!-- bloodGroup -->
@@ -210,6 +230,16 @@
                             {{bloodGroup.value}}
                           </option>
                         </select>
+                        <small
+                            *ngIf="(userForm.get('personalInfo').get('bloodGroup').dirty || userForm.get('personalInfo').get('bloodGroup').touched)"
+                            class="text-danger">
+                            <span *ngIf="userForm.get('personalInfo').get('bloodGroup').errors.required">
+                                maritalStatus is Required
+                            </span>
+                            <span *ngIf="userForm.get('personalInfo').get('bloodGroup').errors.pattern">
+                                Please Enter Valid  maritalStatus
+                            </span>
+                        </small>
                       </div>
                    
                        
@@ -219,7 +249,7 @@
                     <input [(ngModel)]="age" (click)="ageCalculator()" type="text" class="form-control" formControlName="age" id="age"
                         placeholder="Age">
                     <small
-                        *ngIf="!userForm.get('personalInfo').get('age').valid && (userForm.get('personalInfo').get('age').dirty || userForm.get('personalInfo').get('age').touched)"
+                        *ngIf="(userForm.get('personalInfo').get('age').dirty || userForm.get('personalInfo').get('age').touched)"
                         class="text-danger">
                         <span *ngIf="userForm.get('personalInfo').get('age').errors.required">
                             Age is Required
@@ -240,7 +270,7 @@
                         <textarea type="text" class="form-control textarea" formControlName="jobDesc" id="jobDesc"
                             placeholder="Job Description"></textarea>
                         <small
-                            *ngIf="!userForm.get('summaryInfo').get('jobDesc').valid && (userForm.get('summaryInfo').get('jobDesc').dirty || userForm.get('summaryInfo').get('jobDesc').touched)"
+                            *ngIf="(userForm.get('summaryInfo').get('jobDesc').dirty || userForm.get('summaryInfo').get('jobDesc').touched)"
                             class="text-danger">
                             <span *ngIf="userForm.get('summaryInfo').get('jobDesc').errors.required">
                                 Job Description is Required
@@ -256,7 +286,7 @@
                         <textarea type="text" class="form-control textarea" formControlName="aboutMe" id="aboutMe"
                             placeholder="About Me"></textarea>
                         <small
-                            *ngIf="!userForm.get('summaryInfo').get('aboutMe').valid && (userForm.get('summaryInfo').get('aboutMe').dirty || userForm.get('summaryInfo').get('aboutMe').touched)"
+                            *ngIf="(userForm.get('summaryInfo').get('aboutMe').dirty || userForm.get('summaryInfo').get('aboutMe').touched)"
                             class="text-danger">
                             <span *ngIf="userForm.get('summaryInfo').get('aboutMe').errors.required">
                                 About Me is Required
@@ -272,7 +302,7 @@
                         <textarea type="text" class="form-control textarea" formControlName="askMeExperties" id="askMeExperties"
                             placeholder="Ask Me About Expertise"></textarea>
                         <small
-                            *ngIf="!userForm.get('summaryInfo').get('askMeExperties').valid && (userForm.get('summaryInfo').get('askMeExperties').dirty || userForm.get('summaryInfo').get('askMeExperties').touched)"
+                            *ngIf="(userForm.get('summaryInfo').get('askMeExperties').dirty || userForm.get('summaryInfo').get('askMeExperties').touched)"
                             class="text-danger">
                             <span *ngIf="userForm.get('summaryInfo').get('askMeExperties').errors.required">
                                 Ask Me About Expertise is Required
@@ -288,7 +318,7 @@
                         <textarea type="text" class="form-control textarea" formControlName="presentAddress" id="presentAddress"
                             placeholder="Present Address"></textarea>
                         <small
-                            *ngIf="!userForm.get('summaryInfo').get('presentAddress').valid && (userForm.get('summaryInfo').get('presentAddress').dirty || userForm.get('summaryInfo').get('presentAddress').touched)"
+                            *ngIf="(userForm.get('summaryInfo').get('presentAddress').dirty || userForm.get('summaryInfo').get('presentAddress').touched)"
                             class="text-danger">
                             <span *ngIf="userForm.get('summaryInfo').get('presentAddress').errors.required">
                                 Present Address is Required
@@ -304,7 +334,7 @@
                         <input type="number" class="form-control" formControlName="residencePhone" id="residencePhone"
                             placeholder="Residence Phone">
                         <small
-                            *ngIf="!userForm.get('summaryInfo').get('residencePhone').valid && (userForm.get('summaryInfo').get('residencePhone').dirty || userForm.get('summaryInfo').get('residencePhone').touched)"
+                            *ngIf="(userForm.get('summaryInfo').get('residencePhone').dirty || userForm.get('summaryInfo').get('residencePhone').touched)"
                             class="text-danger">
                             <span *ngIf="userForm.get('summaryInfo').get('residencePhone').errors.required">
                                 Residence Phone is Required
@@ -338,7 +368,7 @@
                                     <td>
                                         <textarea style="height: 36px; width:162px" type="text" class="form-control textarea" formControlName="previousCompanyName" id="previousCompanyName"
                                         placeholder="Previous Company Name *"></textarea>
-                                        <small *ngIf="!X['controls'].previousCompanyName.valid && (X['controls'].previousCompanyName.dirty || X['controls'].previousCompanyName.touched)"
+                                        <small *ngIf="(X['controls'].previousCompanyName.dirty || X['controls'].previousCompanyName.touched)"
                                             class="text-danger">
                                             <span *ngIf="X['controls'].previousCompanyName?.errors?.required">
                                                 Previous Company Name
@@ -351,7 +381,7 @@
                                     <td>
                                         <textarea style="height: 36px; width:80px" type="text" class="form-control textarea" formControlName="jobTitle" id="jobTitle"
                                         placeholder="Job Title"></textarea>
-                                        <small *ngIf="!X['controls'].jobTitle.valid && (X['controls'].jobTitle.dirty || X['controls'].jobTitle.touched)"
+                                        <small *ngIf="(X['controls'].jobTitle.dirty || X['controls'].jobTitle.touched)"
                                             class="text-danger">
                                             <span *ngIf="X['controls'].jobTitle?.errors?.required">
                                                 Job Title
@@ -364,7 +394,7 @@
                                     <td>
                                         <input [max]="getToday()" style="height: 36px; width:136px"  type="date" class="form-control" formControlName="fromDate" id="fromDate"
                                         placeholder="From Date *">
-                                        <small *ngIf="!X['controls'].fromDate.valid && (X['controls'].fromDate.dirty || X['controls'].fromDate.touched)"
+                                        <small *ngIf="(X['controls'].fromDate.dirty || X['controls'].fromDate.touched)"
                                             class="text-danger">
                                             <span *ngIf="X['controls'].fromDate?.errors?.required">
                                                 From Date
@@ -375,9 +405,9 @@
                                         </small>
                                     </td>
                                     <td>
-                                        <input [max]="getToday()" style="height: 36px; width:136px" type="date" class="form-control" formControlName="toDate" id="toDate"
+                                        <input [max]="getToday()" [min]="X['controls'].fromDate.value" style="height: 36px; width:136px" type="date" class="form-control" formControlName="toDate" id="toDate"
                                         placeholder="To Date *">
-                                        <small *ngIf="!X['controls'].toDate.valid && (X['controls'].toDate.dirty || X['controls'].toDate.touched)"
+                                        <small *ngIf="(X['controls'].toDate.dirty || X['controls'].toDate.touched)"
                                             class="text-danger">
                                             <span *ngIf="X['controls'].toDate?.errors?.required">
                                                 To Date
@@ -390,7 +420,7 @@
                                     <td>
                                         <textarea style="height: 36px; width:127px" type="text" class="form-control textarea" formControlName="jobDescription" id="jobDescription"
                                         placeholder="Job Description"></textarea>
-                                        <small *ngIf="!X['controls'].jobDescription.valid && (X['controls'].jobDescription.dirty || X['controls'].jobDescription.touched)"
+                                        <small *ngIf="(X['controls'].jobDescription.dirty || X['controls'].jobDescription.touched)"
                                             class="text-danger">
                                             <span *ngIf="X['controls'].jobDescription?.errors?.required">
                                                 Job Description
@@ -403,13 +433,22 @@
                                     <!-- relevance dropdown -->
                                     <td>
                                         <div>
-                                            <select style="height: 36px; width:80px" class="form-select dropdown" formControlName="relevance">
+                                            <select style="height: 36px; width:80px" class="form-select form-control dropdown" formControlName="relevance">
                                                 <option value="default">Select</option>
                                                 <option *ngFor="let relevance of relevance | keyvalue">
                                                     {{relevance.value}}
                                                 </option>
                                             </select>
                                             </div>
+                                            <small *ngIf="(X['controls'].relevance.dirty || X['controls'].relevance.touched)"
+                                            class="text-danger">
+                                            <span *ngIf="X['controls'].relevance?.errors?.required">
+                                                relevance required
+                                            </span>
+                                            <span *ngIf="X['controls'].relevance?.errors?.pattern">
+                                                Please Enter Valid relevance
+                                            </span>
+                                        </small>
                                     </td>
                                     <!-- relevance dropdown end -->
                                    
@@ -425,7 +464,7 @@
                 <div>
                     <div class="row">
                         <div class="col-lg-4"></div>
-                        <div class="col-lg-4"> <button type="submit" class="btn btn-success btn-block"> Submit </button>
+                        <div class="col-lg-4"> <button type="submit"  class="btn btn-success btn-block"> Submit </button>
                         </div>
                     </div>
                 </div> 
