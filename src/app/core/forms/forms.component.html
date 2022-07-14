@@ -303,6 +303,7 @@
           </div>
         </div>
         <!-- Work Info end -->
+        
         <!-- Personal start -->
         <h3>Personal:</h3>
         <div formGroupName="personalInfo" class="form-row">
@@ -376,7 +377,8 @@
               >Birth Date<span class="text-danger">*</span></label
             >
             <input
-              [(ngModel)]="birthdate"
+            [(ngModel)]="birthdate"
+            [max]="getToday()"
               type="date"
               class="form-control"
               formControlName="birthDate"
