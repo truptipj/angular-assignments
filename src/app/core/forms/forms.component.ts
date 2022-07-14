@@ -21,14 +21,8 @@ export class FormsComponent {
   
    birthdate!: Date;
    age!: number;
-  //  minDate: Date;
-  //  maxDate: Date;
+ 
   constructor(private fb: FormBuilder) { 
-    
-    // const currentYear = new Date().getFullYear();
-    // this.minDate = new Date(currentYear - 20, 12, 99);
-    // console.log(this.minDate.toDateString());
-    // this.maxDate = new Date(currentYear + 1, 11, 31);
   }
   ngOnInit() {
     this.createUserForm();
@@ -45,12 +39,12 @@ export class FormsComponent {
       workInfo: this.fb.group({        
         department: ['',  [Validators.required, Validators.pattern(/^(?!\s*$).+/)]],
         location: ['',  [Validators.required, Validators.pattern(/^(?!\s*$).+/)]],
-        workphone: ['',  [Validators.required]],
+        workphone: ['',  [Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
         salaryRevision: ['', Validators.required],
         dateOfJoining: ['', Validators.required]
       }),
       personalInfo: this.fb.group({        
-        mobPhone: ['',  [Validators.required]],
+        mobPhone: ['',  [Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
         age: ['',  [Validators.required]],
         maritalStatus: ['',  [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
         birthDate: ['',  [Validators.required]],
@@ -63,7 +57,7 @@ export class FormsComponent {
         aboutMe: ['',  [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
         askMeExperties: ['',  [Validators.required, Validators.pattern(/^(?!\s*$).+/)]],
         presentAddress: ['',  [Validators.required, Validators.pattern(/^(?!\s*$).+/)]],
-        residencePhone: ['',  [Validators.required]]
+        residencePhone: ['',  [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
       }),
       'experienceInfo': this.fb.array([
         this.initForm()
@@ -73,6 +67,10 @@ export class FormsComponent {
     this.addWorkExp();
   }
   
+  get basic(){
+    return this.userForm.get('') as FormGroup
+  }
+
   initForm(): FormGroup {
     return this.fb.group({
       'previousCompanyName': ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
@@ -119,8 +117,5 @@ export class FormsComponent {
   getToday(): string {
     return new Date().toISOString().split('T')[0]
  }
-
-
-
 }
 

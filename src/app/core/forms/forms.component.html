@@ -1,474 +1,956 @@
 <div class="card">
-    <div class="card-body">
-        <div>
-            <form style="margin: 20px;" [formGroup]="userForm" (ngSubmit)="saveDetails(userForm.value)">
-                <h3>Basic Info:</h3>
-                <div formGroupName="basicInfo" class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="employeeNumber">Employee No<span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" formControlName="employeeNumber" id="employeeNumber"
-                            placeholder="Employee Number">
-                        <small
-                            *ngIf="(userForm.get('basicInfo').get('employeeNumber').dirty || userForm.get('basicInfo').get('employeeNumber').touched)"
-                            class="text-danger">
-                            <span *ngIf="userForm.get('basicInfo').get('employeeNumber').errors.required">
-                                Employee Number is Required
-                            </span>
-                        </small>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="firstName">First Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" formControlName="firstName" id="firstName"
-                            placeholder="First Name">
-                        <small
-                            *ngIf="(userForm.get('basicInfo').get('firstName').dirty || userForm.get('basicInfo').get('firstName').touched)"
-                            class="text-danger">
-                            <span *ngIf="userForm.get('basicInfo').get('firstName').errors.required">
-                                First Name is Required
-                            </span>
-                            <span *ngIf="userForm.get('basicInfo').get('firstName').errors.pattern">
-                                Please Enter Valid First Name
-                            </span>
-                        </small>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="middleName">Middle Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" formControlName="middleName" id="middleName"
-                            placeholder="Middle Name">
-                        <small
-                            *ngIf="(userForm.get('basicInfo').get('middleName').dirty || userForm.get('basicInfo').get('middleName').touched)"
-                            class="text-danger">
-                            <span *ngIf="userForm.get('basicInfo').get('middleName').errors.required">
-                                Middle Name is Required
-                            </span>
-                            <span *ngIf="userForm.get('basicInfo').get('middleName').errors.pattern">
-                                Please Enter Valid Middle Name
-                            </span>
-                        </small>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="lastName">Last Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" formControlName="lastName" id="lastName"
-                            placeholder="Last Name">
-                        <small
-                            *ngIf="(userForm.get('basicInfo').get('lastName').dirty || userForm.get('basicInfo').get('lastName').touched)"
-                            class="text-danger">
-                            <span *ngIf="userForm.get('basicInfo').get('lastName').errors.required">
-                                Last Name is Required
-                            </span>
-                            <span *ngIf="userForm.get('basicInfo').get('lastName').errors.pattern">
-                                Please Enter Valid Last Name
-                            </span>
-                        </small>
-                    </div>
-                </div>
-                <!-- Work Info start -->
-                <h3>Work Info:</h3>
-                <div formGroupName="workInfo" class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="department">Department <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" formControlName="department" id="department"
-                            placeholder="Department">
-                        <small
-                            *ngIf="(userForm.get('workInfo').get('department').dirty || userForm.get('workInfo').get('department').touched)"
-                            class="text-danger">
-                            <span *ngIf="userForm.get('workInfo').get('department').errors.required">
-                                Department is Required
-                            </span>
-                            <span *ngIf="userForm.get('workInfo').get('department').errors.pattern">
-                                Please Enter Valid Department
-                            </span>
-                        </small>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="location">Location <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" formControlName="location" id="location"
-                            placeholder="Location">
-                        <small
-                            *ngIf="(userForm.get('workInfo').get('location').dirty || userForm.get('workInfo').get('location').touched)"
-                            class="text-danger">
-                            <span *ngIf="userForm.get('workInfo').get('location').errors.required">
-                                Location is Required
-                            </span>
-                            <span *ngIf="userForm.get('workInfo').get('location').errors.pattern">
-                                Please Enter Valid Location
-                            </span>
-                        </small>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="workphone">Workphone <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" formControlName="workphone" id="workphone"
-                            placeholder="Workphone">
-                        <small
-                            *ngIf="(userForm.get('workInfo').get('workphone').dirty || userForm.get('workInfo').get('workphone').touched)"
-                            class="text-danger">
-                            <span *ngIf="userForm.get('workInfo').get('workphone').errors.required">
-                                Workphone is Required
-                            </span>
-                        </small>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="salaryRevision">Salary Revision Due On <span class="text-danger">*</span></label>
-                        <input [max]="getToday()" type="date" class="form-control" formControlName="salaryRevision" id="salaryRevision"
-                            placeholder="Salary Revision Due On">
-                        <small
-                            *ngIf="(userForm.get('workInfo').get('salaryRevision').dirty || userForm.get('workInfo').get('salaryRevision').touched)"
-                            class="text-danger">
-                            <span *ngIf="userForm.get('workInfo').get('salaryRevision').errors.required">
-                                Salary Revision Due On is Required
-                            </span>
-                        </small>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="dateOfJoining">Date Of Joining <span class="text-danger">*</span></label>
-                        <input type="date" [max]="getToday()" class="form-control" formControlName="dateOfJoining" id="dateOfJoining"
-                            placeholder="Date Of Joining">
-                        <small
-                            *ngIf="(userForm.get('workInfo').get('dateOfJoining').dirty || userForm.get('workInfo').get('dateOfJoining').touched)"
-                            class="text-danger">
-                            <span *ngIf="userForm.get('workInfo').get('dateOfJoining').errors.required">
-                                Date Of Joining is Required
-                            </span>
-                        </small>
-                    </div>
-                </div>
-                <!-- Work Info end -->
-<!-- Personal start -->
-                <h3>Personal:</h3>
-                <div formGroupName="personalInfo" class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="mobPhone">Mobile Phone<span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" formControlName="mobPhone" id="mobPhone"
-                            placeholder="Mobile Phone">
-                            <small
-                            *ngIf="(userForm.get('personalInfo').get('mobPhone').dirty || userForm.get('personalInfo').get('mobPhone').touched)"
-                            class="text-danger">
-                            <span *ngIf="userForm.get('personalInfo').get('mobPhone').errors.required">
-                                Mobile Phone is Required
-                            </span>
-                        </small>
-                    </div>
-                   
-                <div class="form-group col-md-6">
-                    <label for="tags">Tags<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" formControlName="tags" id="tags"
-                        placeholder="Tags">
-                    <small
-                        *ngIf="(userForm.get('personalInfo').get('tags').dirty || userForm.get('personalInfo').get('tags').touched)"
-                        class="text-danger">
-                        <span *ngIf="userForm.get('personalInfo').get('tags').errors.required">
-                            Tags is Required
-                        </span>
-                        <span *ngIf="userForm.get('personalInfo').get('tags').errors.pattern">
-                            Please Enter Valid  Tags
-                        </span>
-                    </small>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="birthDate">Birth Date<span class="text-danger">*</span></label>
-                    <input [(ngModel)]="birthdate" type="date" class="form-control" formControlName="birthDate" id="birthDate"
-                        placeholder="Birth Date">    
-                    <small
-                        *ngIf="(userForm.get('personalInfo').get('birthDate').dirty || userForm.get('personalInfo').get('birthDate').touched)"
-                        class="text-danger">
-                        <span *ngIf="userForm.get('personalInfo').get('birthDate').errors.required">
-                            Birth Date is Required
-                        </span>
-                        <span *ngIf="userForm.get('personalInfo').get('birthDate').errors.pattern">
-                            Please Enter Valid  Birth Date
-                        </span>
-                    </small>
-                </div>
-
-            
-                    <!-- t shirt -->
-                    <div class="form-group col-md-6">
-                        <label for="tshirt" class="form-label">Current T Shirt size</label>
-                        <select formControlName="tshirt" class="form-control dropdown">
-                          <option *ngFor="let tshirt of tshirt | keyvalue">
-                            {{ tshirt.value}}
-                          </option>
-                        </select>
-                        <small
-                        *ngIf="(userForm.get('personalInfo').get('tshirt').dirty || userForm.get('personalInfo').get('tshirt').touched)"
-                        class="text-danger">
-                        <span *ngIf="userForm.get('personalInfo').get('tshirt').errors.required">
-                            tshirt is Required
-                        </span>
-                        <span *ngIf="userForm.get('personalInfo').get('tshirt').errors.pattern">
-                            Please Enter Valid  tshirt
-                        </span>
-                    </small>
-                      </div>
-                    <!-- t shirt end -->  
-                        <div class="form-group col-md-6">
-                            <label for="maritalStatus" class="form-label">maritalStatus</label>
-                            <select formControlName="maritalStatus" class="form-control dropdown">
-                                <option value="deafult">Select</option>
-                                <option value="single">Single</option>
-                                <option value="married">Married</option>
-                            </select>
-                            <small
-                            *ngIf="(userForm.get('personalInfo').get('maritalStatus').dirty || userForm.get('personalInfo').get('maritalStatus').touched)"
-                            class="text-danger">
-                            <span *ngIf="userForm.get('personalInfo').get('maritalStatus').errors.required">
-                                maritalStatus is Required
-                            </span>
-                            <span *ngIf="userForm.get('personalInfo').get('maritalStatus').errors.pattern">
-                                Please Enter Valid  maritalStatus
-                            </span>
-                        </small>
-                        </div>
-                    <!-- </div> -->
-                    <!-- bloodGroup -->
-                    <div class="form-group col-md-6">
-                        <label for="bloodGroup" class="form-label">bloodGroup</label>
-                        <select formControlName="bloodGroup" class="form-control dropdown">
-                          <option *ngFor="let bloodGroup of bloodgroup | keyvalue">
-                            {{bloodGroup.value}}
-                          </option>
-                        </select>
-                        <small
-                            *ngIf="(userForm.get('personalInfo').get('bloodGroup').dirty || userForm.get('personalInfo').get('bloodGroup').touched)"
-                            class="text-danger">
-                            <span *ngIf="userForm.get('personalInfo').get('bloodGroup').errors.required">
-                                maritalStatus is Required
-                            </span>
-                            <span *ngIf="userForm.get('personalInfo').get('bloodGroup').errors.pattern">
-                                Please Enter Valid  maritalStatus
-                            </span>
-                        </small>
-                      </div>
-                   
-                       
-                   <!-- bloodGroup end -->
-                    <div class="form-group col-md-6">
-                    <label for="age">Age<span class="text-danger">*</span></label>
-                    <input [(ngModel)]="age" (click)="ageCalculator()" type="text" class="form-control" formControlName="age" id="age"
-                        placeholder="Age">
-                    <small
-                        *ngIf="(userForm.get('personalInfo').get('age').dirty || userForm.get('personalInfo').get('age').touched)"
-                        class="text-danger">
-                        <span *ngIf="userForm.get('personalInfo').get('age').errors.required">
-                            Age is Required
-                        </span>
-                        <span *ngIf="userForm.get('personalInfo').get('age').errors.pattern">
-                            Please Enter Valid  Age
-                        </span>
-                    </small>
-                </div>
-                </div>
-                   
-                
-                   <!-- Summary start -->
-                <h3>Summary:</h3>
-                <div formGroupName="summaryInfo" class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="jobDesc">Job Description <span class="text-danger">*</span></label>
-                        <textarea type="text" class="form-control textarea" formControlName="jobDesc" id="jobDesc"
-                            placeholder="Job Description"></textarea>
-                        <small
-                            *ngIf="(userForm.get('summaryInfo').get('jobDesc').dirty || userForm.get('summaryInfo').get('jobDesc').touched)"
-                            class="text-danger">
-                            <span *ngIf="userForm.get('summaryInfo').get('jobDesc').errors.required">
-                                Job Description is Required
-                            </span>
-                            <span *ngIf="userForm.get('summaryInfo').get('jobDesc').errors.pattern">
-                                Please Enter Valid Job Description
-                            </span>
-                        </small>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="aboutMe">About Me <span class="text-danger">*</span></label>
-                        <textarea type="text" class="form-control textarea" formControlName="aboutMe" id="aboutMe"
-                            placeholder="About Me"></textarea>
-                        <small
-                            *ngIf="(userForm.get('summaryInfo').get('aboutMe').dirty || userForm.get('summaryInfo').get('aboutMe').touched)"
-                            class="text-danger">
-                            <span *ngIf="userForm.get('summaryInfo').get('aboutMe').errors.required">
-                                About Me is Required
-                            </span>
-                            <span *ngIf="userForm.get('summaryInfo').get('aboutMe').errors.pattern">
-                                Please Enter Valid About Me
-                            </span>
-                        </small>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="askMeExperties">Ask Me About Expertise <span class="text-danger">*</span></label>
-                        <textarea type="text" class="form-control textarea" formControlName="askMeExperties" id="askMeExperties"
-                            placeholder="Ask Me About Expertise"></textarea>
-                        <small
-                            *ngIf="(userForm.get('summaryInfo').get('askMeExperties').dirty || userForm.get('summaryInfo').get('askMeExperties').touched)"
-                            class="text-danger">
-                            <span *ngIf="userForm.get('summaryInfo').get('askMeExperties').errors.required">
-                                Ask Me About Expertise is Required
-                            </span>
-                            <span *ngIf="userForm.get('summaryInfo').get('askMeExperties').errors.pattern">
-                                Please Enter Valid Ask Me About Expertise
-                            </span>
-                        </small>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="presentAddress">Present Address <span class="text-danger">*</span></label>
-                        <textarea type="text" class="form-control textarea" formControlName="presentAddress" id="presentAddress"
-                            placeholder="Present Address"></textarea>
-                        <small
-                            *ngIf="(userForm.get('summaryInfo').get('presentAddress').dirty || userForm.get('summaryInfo').get('presentAddress').touched)"
-                            class="text-danger">
-                            <span *ngIf="userForm.get('summaryInfo').get('presentAddress').errors.required">
-                                Present Address is Required
-                            </span>
-                            <span *ngIf="userForm.get('summaryInfo').get('presentAddress').errors.pattern">
-                                Please Enter Valid Present Address
-                            </span>
-                        </small>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="residencePhone">Residence Phone <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" formControlName="residencePhone" id="residencePhone"
-                            placeholder="Residence Phone">
-                        <small
-                            *ngIf="(userForm.get('summaryInfo').get('residencePhone').dirty || userForm.get('summaryInfo').get('residencePhone').touched)"
-                            class="text-danger">
-                            <span *ngIf="userForm.get('summaryInfo').get('residencePhone').errors.required">
-                                Residence Phone is Required
-                            </span>
-                        </small>
-                    </div>
-                </div>
-                <!-- Summary end -->
-
-                <!-- Work Experience start -->
-                <h3>Work Experience:</h3>
-                <div class="form-row">
-                    <div class="form-group  col-md-12">
-                        <button class="btn btn-primary" (click)="addWorkExp()" type="button">Add </button>
-                    </div>
-                    <div class="form-group  col-md-12">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Previous Company Name</th>
-                                    <th scope="col">Job Title</th>
-                                    <th scope="col">From Date</th>
-                                    <th scope="col">To Date</th>
-                                    <th scope="col">Job Description</th>
-                                    <th scope="col">Relevance</th>
-                                    <th scope="col">ACTION</th>
-                                </tr>
-                            </thead>
-                            <tbody formArrayName="experienceInfo" *ngFor="let X of f.experienceInfo['controls']; let ix=index">
-                                <tr formGroupName="{{ix}}">
-                                    <td>
-                                        <textarea style="height: 36px; width:162px" type="text" class="form-control textarea" formControlName="previousCompanyName" id="previousCompanyName"
-                                        placeholder="Previous Company Name *"></textarea>
-                                        <small *ngIf="(X['controls'].previousCompanyName.dirty || X['controls'].previousCompanyName.touched)"
-                                            class="text-danger">
-                                            <span *ngIf="X['controls'].previousCompanyName?.errors?.required">
-                                                Previous Company Name
-                                            </span>
-                                            <span *ngIf="X['controls'].previousCompanyName?.errors?.pattern">
-                                                Please Enter Valid Company Name
-                                            </span>
-                                        </small>
-                                    </td>
-                                    <td>
-                                        <textarea style="height: 36px; width:80px" type="text" class="form-control textarea" formControlName="jobTitle" id="jobTitle"
-                                        placeholder="Job Title"></textarea>
-                                        <small *ngIf="(X['controls'].jobTitle.dirty || X['controls'].jobTitle.touched)"
-                                            class="text-danger">
-                                            <span *ngIf="X['controls'].jobTitle?.errors?.required">
-                                                Job Title
-                                            </span>
-                                            <span *ngIf="X['controls'].jobTitle?.errors?.pattern">
-                                                Please Enter Valid Job Title
-                                            </span>
-                                        </small>
-                                    </td>
-                                    <td>
-                                        <input [max]="getToday()" style="height: 36px; width:136px"  type="date" class="form-control" formControlName="fromDate" id="fromDate"
-                                        placeholder="From Date *">
-                                        <small *ngIf="(X['controls'].fromDate.dirty || X['controls'].fromDate.touched)"
-                                            class="text-danger">
-                                            <span *ngIf="X['controls'].fromDate?.errors?.required">
-                                                From Date
-                                            </span>
-                                            <span *ngIf="X['controls'].fromDate?.errors?.pattern">
-                                                Please Enter Valid From Date
-                                            </span>
-                                        </small>
-                                    </td>
-                                    <td>
-                                        <input [max]="getToday()" [min]="X['controls'].fromDate.value" style="height: 36px; width:136px" type="date" class="form-control" formControlName="toDate" id="toDate"
-                                        placeholder="To Date *">
-                                        <small *ngIf="(X['controls'].toDate.dirty || X['controls'].toDate.touched)"
-                                            class="text-danger">
-                                            <span *ngIf="X['controls'].toDate?.errors?.required">
-                                                To Date
-                                            </span>
-                                            <span *ngIf="X['controls'].toDate?.errors?.pattern">
-                                                Please Enter Valid To Date
-                                            </span>
-                                        </small>
-                                    </td>
-                                    <td>
-                                        <textarea style="height: 36px; width:127px" type="text" class="form-control textarea" formControlName="jobDescription" id="jobDescription"
-                                        placeholder="Job Description"></textarea>
-                                        <small *ngIf="(X['controls'].jobDescription.dirty || X['controls'].jobDescription.touched)"
-                                            class="text-danger">
-                                            <span *ngIf="X['controls'].jobDescription?.errors?.required">
-                                                Job Description
-                                            </span>
-                                            <span *ngIf="X['controls'].jobDescription?.errors?.pattern">
-                                                Please Enter Valid Job Description
-                                            </span>
-                                        </small>
-                                    </td>
-                                    <!-- relevance dropdown -->
-                                    <td>
-                                        <div>
-                                            <select style="height: 36px; width:80px" class="form-select form-control dropdown" formControlName="relevance">
-                                                <option value="default">Select</option>
-                                                <option *ngFor="let relevance of relevance | keyvalue">
-                                                    {{relevance.value}}
-                                                </option>
-                                            </select>
-                                            </div>
-                                            <small *ngIf="(X['controls'].relevance.dirty || X['controls'].relevance.touched)"
-                                            class="text-danger">
-                                            <span *ngIf="X['controls'].relevance?.errors?.required">
-                                                relevance required
-                                            </span>
-                                            <span *ngIf="X['controls'].relevance?.errors?.pattern">
-                                                Please Enter Valid relevance
-                                            </span>
-                                        </small>
-                                    </td>
-                                    <!-- relevance dropdown end -->
-                                   
-                                    <td><button type="button" class="btn btn-danger" (click)="removeWorkExp(ix)">Remove</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <!-- Work Experience end -->
-
-                <!-- submit -->
-                <div>
-                    <div class="row">
-                        <div class="col-lg-4"></div>
-                        <div class="col-lg-4"> <button type="submit"  class="btn btn-success btn-block"> Submit </button>
-                        </div>
-                    </div>
-                </div> 
-            </form>
+  <div class="card-body">
+    <div>
+      <form
+        style="margin: 20px"
+        [formGroup]="userForm"
+        (ngSubmit)="saveDetails(userForm.value)"
+      >
+        <h3>Basic Info:</h3>
+        <div formGroupName="basicInfo" class="form-row">
+          <div class="form-group col-md-6">
+            <label for="employeeNumber"
+              >Employee No<span class="text-danger">*</span></label
+            >
+            <input
+              type="number"
+              class="form-control"
+              formControlName="employeeNumber"
+              id="employeeNumber"
+              placeholder="Employee Number"
+            />
+            <small
+              *ngIf="
+                userForm.get('basicInfo').get('employeeNumber').dirty ||
+                userForm.get('basicInfo').get('employeeNumber').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('basicInfo').get('employeeNumber').errors
+                    ?.required
+                "
+              >
+                Employee Number is Required
+              </span>
+            </small>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="firstName"
+              >First Name <span class="text-danger">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              formControlName="firstName"
+              id="firstName"
+              placeholder="First Name"
+            />
+            <small
+              *ngIf="
+                userForm.get('basicInfo').get('firstName').dirty ||
+                userForm.get('basicInfo').get('firstName').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('basicInfo').get('firstName').errors?.required
+                "
+              >
+                First Name is Required
+              </span>
+              <span
+                *ngIf="
+                  userForm.get('basicInfo').get('firstName').errors?.pattern
+                "
+              >
+                Please Enter Valid First Name
+              </span>
+            </small>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="middleName"
+              >Middle Name <span class="text-danger">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              formControlName="middleName"
+              id="middleName"
+              placeholder="Middle Name"
+            />
+            <small
+              *ngIf="
+                userForm.get('basicInfo').get('middleName').dirty ||
+                userForm.get('basicInfo').get('middleName').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('basicInfo').get('middleName').errors?.required
+                "
+              >
+                Middle Name is Required
+              </span>
+              <span
+                *ngIf="
+                  userForm.get('basicInfo').get('middleName').errors?.pattern
+                "
+              >
+                Please Enter Valid Middle Name
+              </span>
+            </small>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="lastName"
+              >Last Name <span class="text-danger">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              formControlName="lastName"
+              id="lastName"
+              placeholder="Last Name"
+            />
+            <small
+              *ngIf="
+                userForm.get('basicInfo').get('lastName').dirty ||
+                userForm.get('basicInfo').get('lastName').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('basicInfo').get('lastName').errors?.required
+                "
+              >
+                Last Name is Required
+              </span>
+              <span
+                *ngIf="
+                  userForm.get('basicInfo').get('lastName').errors?.pattern
+                "
+              >
+                Please Enter Valid Last Name
+              </span>
+            </small>
+          </div>
         </div>
+        <!-- Work Info start -->
+        <h3>Work Info:</h3>
+        <div formGroupName="workInfo" class="form-row">
+          <div class="form-group col-md-6">
+            <label for="department"
+              >Department <span class="text-danger">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              formControlName="department"
+              id="department"
+              placeholder="Department"
+            />
+            <small
+              *ngIf="
+                userForm.get('workInfo').get('department').dirty ||
+                userForm.get('workInfo').get('department').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('workInfo').get('department').errors?.required
+                "
+              >
+                Department is Required
+              </span>
+              <span
+                *ngIf="
+                  userForm.get('workInfo').get('department').errors?.pattern
+                "
+              >
+                Please Enter Valid Department
+              </span>
+            </small>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="location"
+              >Location <span class="text-danger">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              formControlName="location"
+              id="location"
+              placeholder="Location"
+            />
+            <small
+              *ngIf="
+                userForm.get('workInfo').get('location').dirty ||
+                userForm.get('workInfo').get('location').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('workInfo').get('location').errors?.required
+                "
+              >
+                Location is Required
+              </span>
+              <span
+                *ngIf="userForm.get('workInfo').get('location').errors?.pattern"
+              >
+                Please Enter Valid Location
+              </span>
+            </small>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="workphone"
+              >Workphone <span class="text-danger">*</span></label
+            >
+            <input
+              type="number"
+              class="form-control"
+              formControlName="workphone"
+              id="workphone"
+              placeholder="Workphone"
+            />
+            <small
+              *ngIf="
+                userForm.get('workInfo').get('workphone').dirty ||
+                userForm.get('workInfo').get('workphone').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('workInfo').get('workphone').errors?.required
+                "
+              >
+                Workphone is Required
+              </span>
+              <span
+                *ngIf="
+                  userForm.get('workInfo').get('workphone').errors?.pattern
+                "
+              >
+                Please Enter Valid workphone
+              </span>
+            </small>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="salaryRevision"
+              >Salary Revision Due On <span class="text-danger">*</span></label
+            >
+            <input
+              [max]="getToday()"
+              type="date"
+              class="form-control"
+              formControlName="salaryRevision"
+              id="salaryRevision"
+              placeholder="Salary Revision Due On"
+            />
+            <small
+              *ngIf="
+                userForm.get('workInfo').get('salaryRevision').dirty ||
+                userForm.get('workInfo').get('salaryRevision').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('workInfo').get('salaryRevision').errors
+                    ?.required
+                "
+              >
+                Salary Revision Due On is Required
+              </span>
+            </small>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="dateOfJoining"
+              >Date Of Joining <span class="text-danger">*</span></label
+            >
+            <input
+              type="date"
+              [max]="getToday()"
+              class="form-control"
+              formControlName="dateOfJoining"
+              id="dateOfJoining"
+              placeholder="Date Of Joining"
+            />
+            <small
+              *ngIf="
+                userForm.get('workInfo').get('dateOfJoining').dirty ||
+                userForm.get('workInfo').get('dateOfJoining').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('workInfo').get('dateOfJoining').errors?.required
+                "
+              >
+                Date Of Joining is Required
+              </span>
+            </small>
+          </div>
+        </div>
+        <!-- Work Info end -->
+        <!-- Personal start -->
+        <h3>Personal:</h3>
+        <div formGroupName="personalInfo" class="form-row">
+          <div class="form-group col-md-6">
+            <label for="mobPhone"
+              >Mobile Phone<span class="text-danger">*</span></label
+            >
+            <input
+              type="number"
+              class="form-control"
+              formControlName="mobPhone"
+              id="mobPhone"
+              placeholder="Mobile Phone"
+            />
+            <small
+              *ngIf="
+                userForm.get('personalInfo').get('mobPhone').dirty ||
+                userForm.get('personalInfo').get('mobPhone').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('personalInfo').get('mobPhone').errors?.required
+                "
+              >
+                Mobile Phone is Required
+              </span>
+              <span
+                *ngIf="
+                  userForm.get('personalInfo').get('mobPhone').errors?.pattern
+                "
+              >
+                Please Enter Valid Mobile Phone
+              </span>
+            </small>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="tags">Tags<span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="tags"
+              id="tags"
+              placeholder="Tags"
+            />
+            <small
+              *ngIf="
+                userForm.get('personalInfo').get('tags').dirty ||
+                userForm.get('personalInfo').get('tags').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('personalInfo').get('tags').errors?.required
+                "
+              >
+                Tags is Required
+              </span>
+              <span
+                *ngIf="userForm.get('personalInfo').get('tags').errors?.pattern"
+              >
+                Please Enter Valid Tags
+              </span>
+            </small>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="birthDate"
+              >Birth Date<span class="text-danger">*</span></label
+            >
+            <input
+              [(ngModel)]="birthdate"
+              type="date"
+              class="form-control"
+              formControlName="birthDate"
+              id="birthDate"
+              placeholder="Birth Date"
+            />
+            <small
+              *ngIf="
+                userForm.get('personalInfo').get('birthDate').dirty ||
+                userForm.get('personalInfo').get('birthDate').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('personalInfo').get('birthDate').errors?.required
+                "
+              >
+                Birth Date is Required
+              </span>
+              <span
+                *ngIf="
+                  userForm.get('personalInfo').get('birthDate').errors?.pattern
+                "
+              >
+                Please Enter Valid Birth Date
+              </span>
+            </small>
+          </div>
+
+          <!-- t shirt -->
+          <div class="form-group col-md-6">
+            <label for="tshirt" class="form-label">Current T Shirt size</label>
+            <select formControlName="tshirt" class="form-control dropdown">
+              <option *ngFor="let tshirt of tshirt | keyvalue">
+                {{ tshirt.value }}
+              </option>
+            </select>
+            <small
+              *ngIf="
+                userForm.get('personalInfo').get('tshirt').dirty ||
+                userForm.get('personalInfo').get('tshirt').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('personalInfo').get('tshirt').errors?.required
+                "
+              >
+                tshirt is Required
+              </span>
+              <span
+                *ngIf="
+                  userForm.get('personalInfo').get('tshirt').errors?.pattern
+                "
+              >
+                Please Enter Valid tshirt
+              </span>
+            </small>
+          </div>
+          <!-- t shirt end -->
+          <div class="form-group col-md-6">
+            <label for="maritalStatus" class="form-label">maritalStatus</label>
+            <select
+              formControlName="maritalStatus"
+              class="form-control dropdown"
+            >
+              <option value="deafult">Select</option>
+              <option value="single">Single</option>
+              <option value="married">Married</option>
+            </select>
+            <small
+              *ngIf="
+                userForm.get('personalInfo').get('maritalStatus').dirty ||
+                userForm.get('personalInfo').get('maritalStatus').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('personalInfo').get('maritalStatus').errors
+                    ?.required
+                "
+              >
+                maritalStatus is Required
+              </span>
+              <span
+                *ngIf="
+                  userForm.get('personalInfo').get('maritalStatus').errors
+                    ?.pattern
+                "
+              >
+                Please Enter Valid maritalStatus
+              </span>
+            </small>
+          </div>
+          <!-- </div> -->
+          <!-- bloodGroup -->
+          <div class="form-group col-md-6">
+            <label for="bloodGroup" class="form-label">bloodGroup</label>
+            <select formControlName="bloodGroup" class="form-control dropdown">
+              <option *ngFor="let bloodGroup of bloodgroup | keyvalue">
+                {{ bloodGroup.value }}
+              </option>
+            </select>
+            <small
+              *ngIf="
+                userForm.get('personalInfo').get('bloodGroup').dirty ||
+                userForm.get('personalInfo').get('bloodGroup').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('personalInfo').get('bloodGroup').errors
+                    ?.required
+                "
+              >
+                maritalStatus is Required
+              </span>
+              <span
+                *ngIf="
+                  userForm.get('personalInfo').get('bloodGroup').errors?.pattern
+                "
+              >
+                Please Enter Valid maritalStatus
+              </span>
+            </small>
+          </div>
+
+          <!-- bloodGroup end -->
+          <div class="form-group col-md-6">
+            <label for="age">Age<span class="text-danger">*</span></label>
+            <input
+              [(ngModel)]="age"
+              (click)="ageCalculator()"
+              type="text"
+              class="form-control"
+              formControlName="age"
+              id="age"
+              placeholder="Age"
+            />
+            <small
+              *ngIf="
+                userForm.get('personalInfo').get('age').dirty ||
+                userForm.get('personalInfo').get('age').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="userForm.get('personalInfo').get('age').errors?.required"
+              >
+                Age is Required
+              </span>
+              <span
+                *ngIf="userForm.get('personalInfo').get('age').errors?.pattern"
+              >
+                Please Enter Valid Age
+              </span>
+            </small>
+          </div>
+        </div>
+
+        <!-- Summary start -->
+        <h3>Summary:</h3>
+        <div formGroupName="summaryInfo" class="form-row">
+          <div class="form-group col-md-6">
+            <label for="jobDesc"
+              >Job Description <span class="text-danger">*</span></label
+            >
+            <textarea
+              type="text"
+              class="form-control textarea"
+              formControlName="jobDesc"
+              id="jobDesc"
+              placeholder="Job Description"
+            ></textarea>
+            <small
+              *ngIf="
+                userForm.get('summaryInfo').get('jobDesc').dirty ||
+                userForm.get('summaryInfo').get('jobDesc').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('summaryInfo').get('jobDesc').errors?.required
+                "
+              >
+                Job Description is Required
+              </span>
+              <span
+                *ngIf="
+                  userForm.get('summaryInfo').get('jobDesc').errors?.pattern
+                "
+              >
+                Please Enter Valid Job Description
+              </span>
+            </small>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="aboutMe"
+              >About Me <span class="text-danger">*</span></label
+            >
+            <textarea
+              type="text"
+              class="form-control textarea"
+              formControlName="aboutMe"
+              id="aboutMe"
+              placeholder="About Me"
+            ></textarea>
+            <small
+              *ngIf="
+                userForm.get('summaryInfo').get('aboutMe').dirty ||
+                userForm.get('summaryInfo').get('aboutMe').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('summaryInfo').get('aboutMe').errors?.required
+                "
+              >
+                About Me is Required
+              </span>
+              <span
+                *ngIf="
+                  userForm.get('summaryInfo').get('aboutMe').errors?.pattern
+                "
+              >
+                Please Enter Valid About Me
+              </span>
+            </small>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="askMeExperties"
+              >Ask Me About Expertise <span class="text-danger">*</span></label
+            >
+            <textarea
+              type="text"
+              class="form-control textarea"
+              formControlName="askMeExperties"
+              id="askMeExperties"
+              placeholder="Ask Me About Expertise"
+            ></textarea>
+            <small
+              *ngIf="
+                userForm.get('summaryInfo').get('askMeExperties').dirty ||
+                userForm.get('summaryInfo').get('askMeExperties').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('summaryInfo').get('askMeExperties').errors
+                    ?.required
+                "
+              >
+                Ask Me About Expertise is Required
+              </span>
+              <span
+                *ngIf="
+                  userForm.get('summaryInfo').get('askMeExperties').errors
+                    ?.pattern
+                "
+              >
+                Please Enter Valid Ask Me About Expertise
+              </span>
+            </small>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="presentAddress"
+              >Present Address <span class="text-danger">*</span></label
+            >
+            <textarea
+              type="text"
+              class="form-control textarea"
+              formControlName="presentAddress"
+              id="presentAddress"
+              placeholder="Present Address"
+            ></textarea>
+            <small
+              *ngIf="
+                userForm.get('summaryInfo').get('presentAddress').dirty ||
+                userForm.get('summaryInfo').get('presentAddress').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('summaryInfo').get('presentAddress').errors
+                    ?.required
+                "
+              >
+                Present Address is Required
+              </span>
+              <span
+                *ngIf="
+                  userForm.get('summaryInfo').get('presentAddress').errors
+                    ?.pattern
+                "
+              >
+                Please Enter Valid Present Address
+              </span>
+            </small>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="residencePhone"
+              >Residence Phone <span class="text-danger">*</span></label
+            >
+            <input
+              type="number"
+              class="form-control"
+              formControlName="residencePhone"
+              id="residencePhone"
+              placeholder="Residence Phone"
+            />
+            <small
+              *ngIf="
+                userForm.get('summaryInfo').get('residencePhone').dirty ||
+                userForm.get('summaryInfo').get('residencePhone').touched
+              "
+              class="text-danger"
+            >
+              <span
+                *ngIf="
+                  userForm.get('summaryInfo').get('residencePhone').errors
+                    ?.required
+                "
+              >
+                Residence Phone is Required
+              </span>
+              <span
+                *ngIf="
+                  userForm.get('summaryInfo').get('residencePhone').errors
+                    ?.pattern
+                "
+              >
+                Please Enter Valid residencePhone
+              </span>
+            </small>
+          </div>
+        </div>
+        <!-- Summary end -->
+
+        <!-- Work Experience start -->
+        <h3>Work Experience:</h3>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <button
+              class="btn btn-primary"
+              (click)="addWorkExp()"
+              type="button"
+            >
+              Add
+            </button>
+          </div>
+          <div class="form-group col-md-12">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Previous Company Name</th>
+                  <th scope="col">Job Title</th>
+                  <th scope="col">From Date</th>
+                  <th scope="col">To Date</th>
+                  <th scope="col">Job Description</th>
+                  <th scope="col">Relevance</th>
+                  <th scope="col">ACTION</th>
+                </tr>
+              </thead>
+              <tbody
+                formArrayName="experienceInfo"
+                *ngFor="let X of f.experienceInfo['controls']; let ix = index"
+              >
+                <tr formGroupName="{{ ix }}">
+                  <td>
+                    <textarea
+                      style="height: 36px; width: 162px"
+                      type="text"
+                      class="form-control textarea"
+                      formControlName="previousCompanyName"
+                      id="previousCompanyName"
+                      placeholder="Previous Company Name *"
+                    ></textarea>
+                    <small
+                      *ngIf="
+                        X['controls'].previousCompanyName.dirty ||
+                        X['controls'].previousCompanyName.touched
+                      "
+                      class="text-danger"
+                    >
+                      <span
+                        *ngIf="
+                          X['controls'].previousCompanyName?.errors?.required
+                        "
+                      >
+                        Previous Company Name
+                      </span>
+                      <span
+                        *ngIf="
+                          X['controls'].previousCompanyName?.errors?.pattern
+                        "
+                      >
+                        Please Enter Valid Company Name
+                      </span>
+                    </small>
+                  </td>
+                  <td>
+                    <textarea
+                      style="height: 36px; width: 80px"
+                      type="text"
+                      class="form-control textarea"
+                      formControlName="jobTitle"
+                      id="jobTitle"
+                      placeholder="Job Title"
+                    ></textarea>
+                    <small
+                      *ngIf="
+                        X['controls'].jobTitle.dirty ||
+                        X['controls'].jobTitle.touched
+                      "
+                      class="text-danger"
+                    >
+                      <span *ngIf="X['controls'].jobTitle?.errors?.required">
+                        Job Title
+                      </span>
+                      <span *ngIf="X['controls'].jobTitle?.errors?.pattern">
+                        Please Enter Valid Job Title
+                      </span>
+                    </small>
+                  </td>
+                  <td>
+                    <input
+                      [max]="getToday()"
+                      style="height: 36px; width: 136px"
+                      type="date"
+                      class="form-control"
+                      formControlName="fromDate"
+                      id="fromDate"
+                      placeholder="From Date *"
+                    />
+                    <small
+                      *ngIf="
+                        X['controls'].fromDate.dirty ||
+                        X['controls'].fromDate.touched
+                      "
+                      class="text-danger"
+                    >
+                      <span *ngIf="X['controls'].fromDate?.errors?.required">
+                        From Date required
+                      </span>
+                      <span *ngIf="X['controls'].fromDate?.errors?.pattern">
+                        Please Enter Valid From Date
+                      </span>
+                    </small>
+                  </td>
+                  <td>
+                    <input
+                      [max]="getToday()"
+                      [min]="X['controls'].fromDate.value"
+                      style="height: 36px; width: 136px"
+                      type="date"
+                      class="form-control"
+                      formControlName="toDate"
+                      id="toDate"
+                      placeholder="To Date *"
+                    />
+                    <small
+                      *ngIf="
+                        X['controls'].toDate.dirty ||
+                        X['controls'].toDate.touched
+                      "
+                      class="text-danger"
+                    >
+                      <span *ngIf="X['controls'].toDate?.errors?.required">
+                        To Date required
+                      </span>
+                      <span *ngIf="X['controls'].toDate?.errors?.pattern">
+                        Please Enter Valid To Date
+                      </span>
+                    </small>
+                  </td>
+                  <td>
+                    <textarea
+                      style="height: 36px; width: 127px"
+                      type="text"
+                      class="form-control textarea"
+                      formControlName="jobDescription"
+                      id="jobDescription"
+                      placeholder="Job Description"
+                    ></textarea>
+                    <small
+                      *ngIf="
+                        X['controls'].jobDescription.dirty ||
+                        X['controls'].jobDescription.touched
+                      "
+                      class="text-danger"
+                    >
+                      <span
+                        *ngIf="X['controls'].jobDescription?.errors?.required"
+                      >
+                        Job Description required
+                      </span>
+                      <span
+                        *ngIf="X['controls'].jobDescription?.errors?.pattern"
+                      >
+                        Please Enter Valid Job Description
+                      </span>
+                    </small>
+                  </td>
+                  <!-- relevance dropdown -->
+                  <td>
+                    <div>
+                      <select
+                        style="height: 36px; width: 80px"
+                        class="form-select form-control dropdown"
+                        formControlName="relevance"
+                      >
+                        <option value="default">Select</option>
+                        <option *ngFor="let relevance of relevance | keyvalue">
+                          {{ relevance.value }}
+                        </option>
+                      </select>
+                    </div>
+                    <small
+                      *ngIf="
+                        X['controls'].relevance.dirty ||
+                        X['controls'].relevance.touched
+                      "
+                      class="text-danger"
+                    >
+                      <span *ngIf="X['controls'].relevance?.errors?.required">
+                        relevance required
+                      </span>
+                      <span *ngIf="X['controls'].relevance?.errors?.pattern">
+                        Please Enter Valid relevance
+                      </span>
+                    </small>
+                  </td>
+                  <!-- relevance dropdown end -->
+
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      (click)="removeWorkExp(ix)"
+                    >
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Work Experience end -->
+
+        <!-- submit -->
+        <div>
+          <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+              <button type="submit" class="btn btn-success btn-block">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
