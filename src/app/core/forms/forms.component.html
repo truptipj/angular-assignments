@@ -32,8 +32,15 @@
                     ?.required
                 "
               >
-                Employee Number is Required
+                Employee Number Is Required
               </span>
+              <span
+              *ngIf="
+                userForm.get('basicInfo').get('employeeNumber').errors?.pattern
+              "
+            >
+              Please Enter Valid Employee Number
+            </span>
             </small>
           </div>
           <div class="form-group col-md-6">
@@ -59,7 +66,7 @@
                   userForm.get('basicInfo').get('firstName').errors?.required
                 "
               >
-                First Name is Required
+                First Name Is Required
               </span>
               <span
                 *ngIf="
@@ -93,7 +100,7 @@
                   userForm.get('basicInfo').get('middleName').errors?.required
                 "
               >
-                Middle Name is Required
+                Middle Name Is Required
               </span>
               <span
                 *ngIf="
@@ -127,7 +134,7 @@
                   userForm.get('basicInfo').get('lastName').errors?.required
                 "
               >
-                Last Name is Required
+                Last Name Is Required
               </span>
               <span
                 *ngIf="
@@ -165,7 +172,7 @@
                   userForm.get('workInfo').get('department').errors?.required
                 "
               >
-                Department is Required
+                Department Is Required
               </span>
               <span
                 *ngIf="
@@ -199,7 +206,7 @@
                   userForm.get('workInfo').get('location').errors?.required
                 "
               >
-                Location is Required
+                Location Is Required
               </span>
               <span
                 *ngIf="userForm.get('workInfo').get('location').errors?.pattern"
@@ -232,7 +239,7 @@
                   userForm.get('workInfo').get('workphone').errors?.required
                 "
               >
-                Workphone is Required
+                Workphone Is Required
               </span>
               <span
                 *ngIf="
@@ -269,7 +276,7 @@
                     ?.required
                 "
               >
-                Salary Revision Due On is Required
+                Salary Revision Due On Is Required
               </span>
             </small>
           </div>
@@ -280,6 +287,7 @@
             <input
               type="date"
               [max]="getToday()"
+              [min]="userForm.get('workInfo').get('salaryRevision').value"
               class="form-control"
               formControlName="dateOfJoining"
               id="dateOfJoining"
@@ -297,7 +305,7 @@
                   userForm.get('workInfo').get('dateOfJoining').errors?.required
                 "
               >
-                Date Of Joining is Required
+                Date Of Joining Is Required
               </span>
             </small>
           </div>
@@ -330,7 +338,7 @@
                   userForm.get('personalInfo').get('mobPhone').errors?.required
                 "
               >
-                Mobile Phone is Required
+                Mobile Phone Is Required
               </span>
               <span
                 *ngIf="
@@ -363,7 +371,7 @@
                   userForm.get('personalInfo').get('tags').errors?.required
                 "
               >
-                Tags is Required
+                Tags Is Required
               </span>
               <span
                 *ngIf="userForm.get('personalInfo').get('tags').errors?.pattern"
@@ -384,7 +392,9 @@
               formControlName="birthDate"
               id="birthDate"
               placeholder="Birth Date"
+              (change)="ageCalculator()"
             />
+           
             <small
               *ngIf="
                 userForm.get('personalInfo').get('birthDate').dirty ||
@@ -397,7 +407,7 @@
                   userForm.get('personalInfo').get('birthDate').errors?.required
                 "
               >
-                Birth Date is Required
+                Birth Date Is Required
               </span>
               <span
                 *ngIf="
@@ -413,6 +423,7 @@
           <div class="form-group col-md-6">
             <label for="tshirt" class="form-label">Current T Shirt size</label>
             <select formControlName="tshirt" class="form-control dropdown">
+              <option>Select tshirt Size</option>
               <option *ngFor="let tshirt of tshirt | keyvalue">
                 {{ tshirt.value }}
               </option>
@@ -429,7 +440,7 @@
                   userForm.get('personalInfo').get('tshirt').errors?.required
                 "
               >
-                tshirt is Required
+                tshirt Is Required
               </span>
               <span
                 *ngIf="
@@ -441,15 +452,14 @@
             </small>
           </div>
           <!-- t shirt end -->
+          <!-- Marital Status Start -->
           <div class="form-group col-md-6">
-            <label for="maritalStatus" class="form-label">maritalStatus</label>
-            <select
-              formControlName="maritalStatus"
-              class="form-control dropdown"
-            >
-              <option value="deafult">Select</option>
-              <option value="single">Single</option>
-              <option value="married">Married</option>
+            <label for="maritalStatus" class="form-label">Marital Status</label>
+            <select formControlName="maritalStatus" class="form-control dropdown">
+              <option>Select Marital Status</option>
+              <option *ngFor="let maritalStatus of maritalstatus | keyvalue">
+                {{ maritalStatus.value }}
+              </option>
             </select>
             <small
               *ngIf="
@@ -464,23 +474,23 @@
                     ?.required
                 "
               >
-                maritalStatus is Required
+              Marital Status Required
               </span>
               <span
                 *ngIf="
-                  userForm.get('personalInfo').get('maritalStatus').errors
-                    ?.pattern
+                  userForm.get('personalInfo').get('maritalStatus').errors?.pattern
                 "
               >
-                Please Enter Valid maritalStatus
+                Please Enter Valid Marital Status
               </span>
             </small>
           </div>
-          <!-- </div> -->
+          <!-- Marital Status End -->
           <!-- bloodGroup -->
           <div class="form-group col-md-6">
             <label for="bloodGroup" class="form-label">bloodGroup</label>
             <select formControlName="bloodGroup" class="form-control dropdown">
+              <option>Select Blood Group</option>
               <option *ngFor="let bloodGroup of bloodgroup | keyvalue">
                 {{ bloodGroup.value }}
               </option>
@@ -498,14 +508,14 @@
                     ?.required
                 "
               >
-                maritalStatus is Required
+              Blood Group is Required
               </span>
               <span
                 *ngIf="
                   userForm.get('personalInfo').get('bloodGroup').errors?.pattern
                 "
               >
-                Please Enter Valid maritalStatus
+                Please Enter Valid Blood Group
               </span>
             </small>
           </div>
@@ -515,13 +525,15 @@
             <label for="age">Age<span class="text-danger">*</span></label>
             <input
               [(ngModel)]="age"
-              (click)="ageCalculator()"
+              
               type="text"
               class="form-control"
               formControlName="age"
               id="age"
               placeholder="Age"
+              value="{{age}}"
             />
+            
             <small
               *ngIf="
                 userForm.get('personalInfo').get('age').dirty ||
@@ -532,7 +544,7 @@
               <span
                 *ngIf="userForm.get('personalInfo').get('age').errors?.required"
               >
-                Age is Required
+                Age Is Required
               </span>
               <span
                 *ngIf="userForm.get('personalInfo').get('age').errors?.pattern"
@@ -569,7 +581,7 @@
                   userForm.get('summaryInfo').get('jobDesc').errors?.required
                 "
               >
-                Job Description is Required
+                Job Description Is Required
               </span>
               <span
                 *ngIf="
@@ -604,7 +616,7 @@
                   userForm.get('summaryInfo').get('aboutMe').errors?.required
                 "
               >
-                About Me is Required
+                About Me Is Required
               </span>
               <span
                 *ngIf="
@@ -640,7 +652,7 @@
                     ?.required
                 "
               >
-                Ask Me About Expertise is Required
+                Ask Me About Expertise Is Required
               </span>
               <span
                 *ngIf="
@@ -677,7 +689,7 @@
                     ?.required
                 "
               >
-                Present Address is Required
+                Present Address Is Required
               </span>
               <span
                 *ngIf="
@@ -714,7 +726,7 @@
                     ?.required
                 "
               >
-                Residence Phone is Required
+                Residence Phone Is Required
               </span>
               <span
                 *ngIf="

@@ -3,24 +3,26 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
 import { bloodGroup } from 'src/app/bloodGroup';
 import { relevance } from 'src/app/relevance';
 import { tshirt } from 'src/app/tshirt';
-
+import { maritalStatus } from 'src/app/maritalStatus';
 @Component({
   selector: 'app-forms',
   templateUrl: './forms.component.html',
   styleUrls: ['./forms.component.scss']
 })
 export class FormsComponent {
+  
 // enum dropdown
   tshirt = tshirt;
   bloodgroup = bloodGroup;
   relevance= relevance;
+  maritalstatus= maritalStatus;
 //formgroup
   userForm: any;
   
   addressFormGroup: any = FormGroup;
   
    birthdate!: Date;
-   age!: number;
+   age!:number;
  
   constructor(private fb: FormBuilder) { 
   }
@@ -30,7 +32,7 @@ export class FormsComponent {
   createUserForm() {
     this.userForm = this.fb.group({
       basicInfo: this.fb.group({        
-        employeeNumber: ['',  [Validators.required]],
+        employeeNumber: ['',  [Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
         firstName: ['',  [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
         middleName: ['',  [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
         lastName: ['',  [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]]
@@ -112,10 +114,12 @@ export class FormsComponent {
       const convertAge = new Date(this.birthdate);
       const timeDiff = Math.abs(Date.now() - convertAge.getTime());
       this.age = Math.floor((timeDiff / (1000 * 3600 * 24))/365);
+    
     }
   }
   getToday(): string {
     return new Date().toISOString().split('T')[0]
  }
+
 }
 
