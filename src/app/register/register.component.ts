@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { WebService } from '../servises/web.service';
+import { RegisterService } from '../core/services/register.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +12,7 @@ import { WebService } from '../servises/web.service';
 export class RegisterComponent implements OnInit {
     registerForm: any;
 
-  constructor(private webService: WebService, private fb:FormBuilder, private router:Router,) { }
+  constructor(private registerService: RegisterService, private fb:FormBuilder, private router:Router,) { }
 
   ngOnInit(): void {
       this.registerForm = this.fb.group({
@@ -26,8 +26,7 @@ export class RegisterComponent implements OnInit {
   public onSubmit(): void {
     console.log(this.registerForm.value);
     let url = environment.baseUrl + "Register";
-    this.webService.postData(url,this.registerForm.value).subscribe((res)=>{
-      console.log(res);
+    this.registerService.registerPostData(url,this.registerForm.value).subscribe((res)=>{
       if(res.result) {
         this.router.navigate(['login'])
       }
@@ -36,7 +35,6 @@ export class RegisterComponent implements OnInit {
     localStorage.setItem('form-data', JSON.stringify(this.registerForm.value));
 }
 openLogin(){
-  console.log('xyz');
   this.router.navigate(['login'])
 }
 }
