@@ -1,0 +1,30 @@
+.content {
+    margin-left: 15%;
+    padding: 1px 16px;
+    height: 500px;
+    // margin-right: 660px;
+    // style="margin-right: 660px;"
+}
+
+  .table{
+    display: inline-table;
+    overflow-x: auto;
+    white-space: nowrap;
+   margin-left: -2px;
+   margin-top: 10px;
+  }
+  .table_responsive {
+
+    width: 90%;
+    overflow: auto;
+}
+th, td {
+  border-style:solid;
+  border-color: #121313;
+}
+
+.add_button_class{
+  margin-top:55px;
+}
+
+

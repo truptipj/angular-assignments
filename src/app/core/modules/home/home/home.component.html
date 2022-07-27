@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img class="logo" width="auto" src="../../../../../assets/ix-logo.png" alt="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+      <div><button (click) = "goToAboutUs()" class="btn btn-primary nav" type="button">About Us</button></div>
+      <div><button (click) = "goToContactUs()" class="btn btn-primary nav" type="button">Contact Us</button></div>
+      <div><button (click) = "goToLogin()" class="btn btn-primary nav" type="button">Login</button></div>
+      <div><button (click) = "goToRegister()" class="btn btn-primary nav" type="button">Register</button></div>
+      </div>
+    </div>
+</nav>
+<router-outlet></router-outlet>

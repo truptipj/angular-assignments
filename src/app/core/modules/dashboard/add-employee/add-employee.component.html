@@ -1,0 +1,84 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6 form_body mt-4">
+        <form  [formGroup]="employeeForm" >
+          <div class="container">
+            <div class="heading mt-2"><h3>Add Employee</h3></div>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="exampleInputFirstName">First Name</label>
+                  <input type="text" class="form-control" formControlName="firstName" id="firstName" />
+                  <small *ngIf="(employeeControl.firstName.touched && employeeControl.firstName.errors?.required)"
+                  class="text-danger">First Name is Required</small>
+                  <small *ngIf="(employeeControl.firstName.errors?.pattern)"
+                  class="text-danger">First Name enter valid</small>
+                </div>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" class="form-control" formControlName="lastName" id="lastName" />
+                  <small *ngIf="(employeeControl.lastName.touched && employeeControl.lastName.errors?.required)"
+                  class="text-danger">Last Name is Required</small>
+                  <small *ngIf="(employeeControl.lastName.errors?.pattern)"
+                  class="text-danger">Last Name enter valid</small>
+                </div>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="mobileNumber">Mobile Number</label>
+                  <input type="text" class="form-control" minlength="10" maxlength="10" formControlName="mobileNumber" id="mobileNumber" />
+                  <small *ngIf="(employeeControl.mobileNumber.touched && employeeControl.mobileNumber.errors?.required)"
+                  class="text-danger">Mobile Number is Required</small>
+                  <small *ngIf="(employeeControl.mobileNumber.errors?.pattern)"
+                  class="text-danger">Mobile Number enter valid</small>
+                </div>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="location">Location</label>
+                  <input type="text" class="form-control" formControlName="location" id="location" />
+                  <small *ngIf="(employeeControl.location.touched && employeeControl.location.errors?.required)"
+                  class="text-danger">Location is Required</small>
+                  <small *ngIf="(employeeControl.location.errors?.pattern)"
+                  class="text-danger">Location enter valid</small>
+                </div>
+              </div>
+            </div>
+  
+            <div class="footer">
+              
+              <button
+                type="reset"
+                class="btn btn-secondary ml-4"
+                data-dismiss="modal"
+              >
+                Cancel
+              </button> &nbsp;
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-dismiss="modal"
+                (click)="addEmployee()"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-3"></div>
+    </div>
+  </div>
+  

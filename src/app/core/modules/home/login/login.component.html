@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4 center">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="text-center">
+                        Login
+                    </h3>
+                    <form role="form" [formGroup]="loginForm" (ngSubmit)="submit()">
+    
+                        <div class="form-group">
+
+                            <label for="exampleInputEmail1">
+                                User Name
+                            </label>
+                            <input type="text" class="form-control" formControlName="username" id="exampleInputEmail1" />
+                            <small *ngIf="(loginControl.username.touched && loginControl.username.errors?.required)"
+                                class="text-danger">user name is Required</small>
+                        </div> <br>
+                        <div class="form-group">
+
+                            <label for="exampleInputPassword1">
+                                Password
+                            </label>
+                            <input type="password" class="form-control" formControlName="password"
+                                id="exampleInputPassword1" />
+                            <small *ngIf="(loginControl.password.touched && loginControl.password.errors?.required)"
+                                class="text-danger">Password is Required</small>
+                        </div> <br>
+
+                        <button type="submit" class="btn btn-primary">
+                            Submit
+                        </button>
+                        <br>
+                        <p style="color:red"> not registerd yet..?</p>
+                        <div class="mt-2">
+                            <button type="button" (click) = "goToRegister()" class="btn btn-primary" 
+                                >
+                                Register here
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+
+
+   
